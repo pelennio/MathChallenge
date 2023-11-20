@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../src/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Acme&family=Black+Ops+One&display=swap" rel="stylesheet" />
+
+  <link rel="shortcut icon" href="#" />
+  <title>😺 New multiplication page</title>
+</head>
+
+<body>
+  <div id="snowflakeContainer">
+    <img class="snowflake" src="../src/icons_1.svg" />
+  </div>
+  <section class="head">
+      <div class="nav-container">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/mathProject/pages/index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+          href="https://website6050359.nicepage.io/Page-1.html?version=b58c24af-7ef4-a944-3f34-7afb23c5d771">Page 1</a>
+      </li>
+    </ul>
+    <h1 >Here we are going to practice multiplication</h1>
+    </div>
+  </section>
+
+
+  <section class="section" id="sec">
+    <div class="lay">
+      <div class="container_main container_float" id="multiplicatorForm">
+        <p>
+          <label class="result2" id="nameLable">Enter the number to be checked:</label>
+        </p>
+        <input id="userinput" type="text" placeholder="Type your number" autofocus autocomplete="off" />
+        <button id="multiplicator" type="submit">Start the challenge</button>
+      </div>
+
+
+      <div class="container_main container_float results">
+        <p id="score">Score : 0</p>
+        <p id="wrongAnswerCount">Wrong_Answers : 0</p>
+        <img src="../src/red_heart.gif" id="heart1" alt="Computer man" style="width:50px;height:50px;">
+        <img src="../src/red_heart.gif" id="heart2" alt="Computer man" style="width:50px;height:50px;">
+        <img src="../src/red_heart.gif" id="heart3" alt="Computer man" style="width:50px;height:50px;">
+        </p>
+
+      </div>
+
+    </div>
+    <img class="pete1" src="../src/pngaaa.com-757953.png" alt="" />
+  </section>
+
+
+  <section class="section" id="sec">
+    <div class="container_main container2   results">
+      <p class="result2" id="multiplicatorCheckResult">⛄️ I'm waiting on the number</p>
+      </br>
+      <button class="challenge" id="challenge"></button>
+      <input type="test" placeholder="Your answer" id="userAnswer" autocomplete="off" />
+      <button id="checkAnswer">Check your answer</button><br />
+      <button id="nextProblem">Next Problem</button><br />
+      <p id="answerCheckResult" class="answerCheckResult"></p>
+    </div>
+  </section>
+
+  <section class="section " id="sec">
+    <div class="container table container_float">
+      <h2 id="header">The results of the challange</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Number1</th>
+              <th>Number2</th>
+              <th>Answer</th>
+            </tr>
+          </thead>
+          <tbody id="data-output"></tbody>
+        </table>
+    </div>
+
+    <div class="container table container_float">
+      <h2 id="header">The scores of the challanges</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Challenge</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody id="data-output1"></tbody>
+        </table>
+    </div>
+  </section>
+
+
+  <footer class="footer" id="sec-a5e5">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <p>Part of my learning<br>
+      </p>
+    </div>
+  </footer>
+  </section>
+  <script type="module" src="../app/multiplicationListener.js"></script>
+  <script type="module" src="../app/snowflakes.js"></script>
+</body>
+
+</html>

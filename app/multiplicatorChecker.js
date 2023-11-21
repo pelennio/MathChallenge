@@ -154,7 +154,7 @@ function testScores() {
     if (exp.test(a)) {
       out += `
            <tr>
-              <td>${a}</td>
+              <td>${a.slice(22)}</td>
               <td>${localStorage[a]}</td>
            </tr>
         `;
@@ -178,6 +178,10 @@ function checkTheAnswer(answerValue, number1) {
       arrayChallenge.splice(index, 1);
     }
     rect = myEl.answerButton.getBoundingClientRect();
+    console.log(
+      "rect.left, rect.top, true" + rect.left + "  " + rect.top,
+      true
+    );
     for (let i = 0; i < window.PARTICLES_NUMBER; i++) {
       createParticle(rect.left, rect.top, true);
     }

@@ -43,12 +43,9 @@ export function checkUserResult() {
     : "It is not a correct answer";
   tableConstructor(testResults);
   testScores();
-  myEl.scoreElement.textContent = `Score : ${score}`;
+  myEl.scoreElement.textContent = `Current challenge score : ${score}`;
   myEl.wrongAnswerCountElement.textContent = `Wrong_Answers : ${wrongAnswerCount}`;
-
-  //generate next problem
   action(myEl.answerButton, myEl.nextProblemButton);
-  myEl.nextProblemButton.focus();
 }
 
 export function generateNextChallenge() {
@@ -65,7 +62,6 @@ export function generateNextChallenge() {
     myEl.answerCheckResultLine.textContent = "";
   }
   action(myEl.answerButton, myEl.nextProblemButton);
-  myEl.challenge.focus();
 }
 
 function validateMultiplicatorInput(numberValue) {
@@ -116,7 +112,6 @@ Array.prototype.random = function () {
     myEl.answerCheckResultLine.textContent = "👍👍👍";
     myEl.multiplicatorCheckResultLine.textContent = "";
     resetStats();
-    myEl.multiplicatorInput.focus();
     throw new TypeError("No more elements in array.");
   } else {
     return el;
@@ -125,7 +120,7 @@ Array.prototype.random = function () {
 
 function setNewMultiplier(multiplicatorValue) {
   multiplier = arrayChallenge.random();
-  challenge.textContent = multiplicatorValue + " * " + multiplier + " =";
+  challenge.textContent = multiplicatorValue + "*" + multiplier + "=";
   myEl.userAnswerInput.value = "";
   return multiplier;
 }
@@ -178,10 +173,6 @@ function checkTheAnswer(answerValue, number1) {
       arrayChallenge.splice(index, 1);
     }
     rect = myEl.answerButton.getBoundingClientRect();
-    console.log(
-      "rect.left, rect.top, true" + rect.left + "  " + rect.top,
-      true
-    );
     for (let i = 0; i < window.PARTICLES_NUMBER; i++) {
       createParticle(rect.left, rect.top, true);
     }
@@ -207,7 +198,6 @@ function checkTheAnswer(answerValue, number1) {
       window.alert("HEHE  - you need to practice more ❤️ \nStart again");
       resetStats();
       myEl.answerCheckResultLine.textContent = "👎👎👎";
-      myEl.multiplicatorInput.focus();
       throw new TypeError("Epic fail.");
     }
     return false;
@@ -233,19 +223,17 @@ function action(button1, button2) {
 }
 
 function resetStats() {
-  localStorage.setItem("score", String("0"));
+  // localStorage.setItem("score", String("0"));
   score = 0;
   myEl.userAnswerInput.value = "";
   myEl.challenge.textContent = "";
-
   wrongAnswerCount = 0;
   myEl.wrongAnswerCountElement.textContent = `Wrong_Answers : ${wrongAnswerCount}`;
   myEl.multiplicatorInput.value = "";
-  myEl.scoreElement.textContent = `Score : ${score}`;
+  myEl.scoreElement.textContent = `Curent score : ${score}`;
   myEl.heart1.src = "../src/red_heart.gif";
   myEl.heart2.src = "../src/red_heart.gif";
   myEl.heart3.src = "../src/red_heart.gif";
-
   arrayChallenge = setNewArrayChallenge();
   hidden = false;
 }

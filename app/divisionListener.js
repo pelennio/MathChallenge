@@ -24,7 +24,6 @@ myEl.answerButton.addEventListener("click", function () {
   checkUserResult();
   myEl.userAnswerInput.focus();
 });
-
 myEl.nextProblemButton.addEventListener("click", function () {
   generateNextChallenge();
   sleep(300).then(() => {

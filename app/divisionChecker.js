@@ -23,8 +23,7 @@ window.PARTICLES_NUMBER = 30;
 export function submitDivider() {
   multiplicatorValue = Number(myEl.multiplicatorInput.value);
   if (validateMultiplicatorInput(multiplicatorValue)) {
-    myEl.multiplicatorCheckResultLine.textContent =
-      validateMultiplicatorInput(multiplicatorValue);
+    myEl.multiplicatorCheckResultLine.textContent = multiplicatorCheckResult;
   } else {
     return;
   }
@@ -74,20 +73,28 @@ export function generateNextChallenge() {
 }
 
 function validateMultiplicatorInput(numberValue) {
-  if (
+  if (numberValue <= 10 && numberValue >= 0) {
+    myEl.nextProblemButton.style.backgroundColor = "blue";
+    myEl.nextProblemButton.style.display = "none";
+    myEl.answerButton.style.display = "inline";
+    multiplicatorCheckResult = "Let's check the division for " + numberValue;
+    return true;
+  } else if (
     numberValue === "" ||
     numberValue === null ||
     numberValue === "undefined"
   ) {
-    return (multiplicatorCheckResult = "⚠️ type some number");
+    myEl.multiplicatorInput.value = "";
+    myEl.multiplicatorInput.focus;
+    multiplicatorCheckResult = "⚠️ type some number";
+    return false;
   } else if (numberValue > 11) {
     return (multiplicatorCheckResult = "Make sure your number is less than 11");
   } else {
-    myEl.nextProblemButton.style.backgroundColor = "blue";
-    myEl.nextProblemButton.style.display = "none";
-    myEl.answerButton.style.display = "inline";
-    return (multiplicatorCheckResult =
-      "Let's check the division for " + numberValue);
+    myEl.multiplicatorInput.value = "";
+    myEl.multiplicatorInput.focus;
+    multiplicatorCheckResult = "⚠️ type some number";
+    return false;
   }
 }
 function validateMultiplicatorInput2(numberValue) {

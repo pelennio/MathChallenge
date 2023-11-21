@@ -190,20 +190,27 @@ p {
     color: var(--color-1);
   }
 }
+.nav-container {
+  position: relative;
+}
 .nav {
   list-style: none;
-  display: inline-block;
+  display: block;
   padding-left: 0px;
   /* position: relative; */
   text-decoration: none;
-  position: absolute;
   right: 0px;
-  width: 300px;
+  position: absolute;
+  bottom: 0px;
+  margin-bottom: 0px;
 }
 .nav-item {
-  display: inline-block;
+  display: block;
   padding: 10px 20px;
   white-space: nowrap;
+  /* right: 0px;
+  position: absolute;
+  bottom: 0px; */
 }
 
 input {

@@ -18,9 +18,7 @@ export function submitMultiplicator() {
   const numberValue = myEl.multiplicatorInput.value;
   if (validateMultiplicatorInput(numberValue)) {
     multiplicatorValue = Number(numberValue);
-
-    myEl.multiplicatorCheckResultLine.textContent =
-      validateMultiplicatorInput(numberValue);
+    myEl.multiplicatorCheckResultLine.textContent = multiplicatorCheckResult;
   } else {
     return;
   }
@@ -70,20 +68,29 @@ export function generateNextChallenge() {
 }
 
 function validateMultiplicatorInput(numberValue) {
-  if (
+  if (numberValue <= 10 && numberValue >= 0) {
+    myEl.nextProblemButton.style.backgroundColor = "blue";
+    myEl.nextProblemButton.style.display = "none";
+    myEl.answerButton.style.display = "inline";
+    multiplicatorCheckResult =
+      "Let's check the multiplication for " + numberValue;
+    return true;
+  } else if (
     numberValue === "" ||
     numberValue === null ||
     numberValue === "undefined"
   ) {
-    return (multiplicatorCheckResult = "⚠️ type some number");
+    myEl.multiplicatorInput.value = "";
+    myEl.multiplicatorInput.focus;
+    multiplicatorCheckResult = "⚠️ type some number";
+    return false;
   } else if (numberValue > 11) {
     return (multiplicatorCheckResult = "Make sure your number is less than 11");
   } else {
-    myEl.nextProblemButton.style.backgroundColor = "blue";
-    myEl.nextProblemButton.style.display = "none";
-    myEl.answerButton.style.display = "inline";
-    return (multiplicatorCheckResult =
-      "Let's check the multiplication for " + numberValue);
+    myEl.multiplicatorInput.value = "";
+    myEl.multiplicatorInput.focus;
+    multiplicatorCheckResult = "⚠️ type some number";
+    return false;
   }
 }
 function validateMultiplicatorInput2(numberValue) {

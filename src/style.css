@@ -18,11 +18,18 @@ body {
   display: block;
 }
 .head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background: url(https://supadu-io.imgix.net/harpercollins-icanread/icanread-site/background-header.png?auto=format);
   background-repeat: repeat;
   padding-bottom: 20px;
   border-bottom-width: 4px;
   border-bottom-style: solid;
+  z-index: 3;
+  padding-bottom: 0px;
+  height: 50px;
 }
 h1 {
   width: 100%;
@@ -190,9 +197,9 @@ p {
     color: var(--color-1);
   }
 }
-.nav-container {
+/* .nav-container {
   position: relative;
-}
+} */
 .nav {
   list-style: none;
   display: block;
@@ -203,11 +210,14 @@ p {
   position: absolute;
   bottom: 0px;
   margin-bottom: 0px;
+  margin-top: 50px;
 }
 .nav-item {
   display: block;
-  padding: 10px 20px;
+
   white-space: nowrap;
+  padding-bottom: 0px;
+  padding-top: 0px;
   /* right: 0px;
   position: absolute;
   bottom: 0px; */

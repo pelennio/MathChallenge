@@ -27,6 +27,7 @@ myEl.answerButton.addEventListener("click", function () {
 });
 myEl.nextProblemButton.addEventListener("click", function () {
   generateNextChallenge();
+  myEl.userAnswerInput.focus();
 });
 myEl.challenge.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
@@ -35,7 +36,7 @@ myEl.challenge.addEventListener("keyup", function (e) {
 });
 
 var coll = document.getElementsByClassName("collapsible");
-var i;
+let i;
 
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function () {

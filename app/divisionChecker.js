@@ -49,10 +49,7 @@ export function checkUserResult() {
   testScores();
   myEl.scoreElement.textContent = `Current challenge score : ${score}`;
   myEl.wrongAnswerCountElement.textContent = `Wrong_Answers : ${wrongAnswerCount}`;
-
-  //generate next problem
   action(myEl.answerButton, myEl.nextProblemButton);
-  myEl.nextProblemButton.focus();
 }
 
 export function generateNextChallenge() {
@@ -69,7 +66,6 @@ export function generateNextChallenge() {
     myEl.answerCheckResultLine.textContent = "";
   }
   action(myEl.answerButton, myEl.nextProblemButton);
-  myEl.challenge.focus();
 }
 
 function validateMultiplicatorInput(numberValue) {
@@ -119,7 +115,6 @@ Array.prototype.random = function () {
     myEl.answerCheckResultLine.textContent = "👍👍👍";
     myEl.multiplicatorCheckResultLine.textContent = "";
     resetStats();
-    myEl.multiplicatorInput.focus();
     throw new TypeError("No more elements in array.");
   } else {
     return el;
@@ -206,7 +201,6 @@ function checkTheAnswer(answerValue, number1) {
       window.alert("HEHE  - you need to practice more ❤️ \nStart again");
       resetStats();
       myEl.answerCheckResultLine.textContent = "👎👎👎";
-      myEl.multiplicatorInput.focus();
       throw new TypeError("Epic fail.");
     }
     return false;

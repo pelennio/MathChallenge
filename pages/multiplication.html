@@ -35,7 +35,7 @@
         <p>
           <label class="result2" id="nameLable">Enter the number to be checked:</label>
         </p>
-        <input id="userinput" type="text" placeholder="Type your number" autofocus autocomplete="off" />
+        <input pattern="[0-9]*" id="userinput" type="text" placeholder="Type your number" autofocus autocomplete="off" />
         <button id="multiplicator" type="submit">Start the challenge</button>
       </div>
 
@@ -59,7 +59,7 @@
       <p class="result2" id="multiplicatorCheckResult">⛄️ I'm waiting on the number</p>
       </br>
       <button class="challenge" id="challenge"></button>
-      <input type="test" placeholder="Your answer" id="userAnswer" autocomplete="off" />
+      <input pattern="[0-9]*" type="test" placeholder="Your answer" id="userAnswer" autocomplete="off" />
       <button id="checkAnswer">Check your answer</button><br />
       <button id="nextProblem">Next Problem</button><br />
       <p id="answerCheckResult" class="answerCheckResult"></p>

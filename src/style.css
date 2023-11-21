@@ -356,3 +356,14 @@ table td {
 #header {
   text-shadow: 2px 2px rgba(197, 187, 208, 0.42);
 }
+
+.heart1 {
+  object-fit: contain;
+}
+
+.heart {
+  object-fit: contain;
+  width: 30%;
+  height: 100%;
+  display: inline-block;
+}

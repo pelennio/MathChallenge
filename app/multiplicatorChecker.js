@@ -12,6 +12,7 @@ let score = Number(localStorage.getItem("score"))
 let wrongAnswerCount = 0;
 let multiplier;
 let hidden = false;
+let rect = myEl.answerButton.getBoundingClientRect();
 window.PARTICLES_NUMBER = 30;
 
 export function submitMultiplicator() {
@@ -176,8 +177,9 @@ function checkTheAnswer(answerValue, number1) {
     if (index > -1) {
       arrayChallenge.splice(index, 1);
     }
+    rect = myEl.answerButton.getBoundingClientRect();
     for (let i = 0; i < window.PARTICLES_NUMBER; i++) {
-      createParticle((window.innerWidth / 3) * 2, window.innerHeight / 3, true);
+      createParticle(rect.left, rect.top, true);
     }
     console.log("tadaaaa");
     return true;
@@ -190,11 +192,7 @@ function checkTheAnswer(answerValue, number1) {
     score--;
     updateScore();
     for (let i = 0; i < window.PARTICLES_NUMBER; i++) {
-      createParticle(
-        (window.innerWidth / 3) * 2,
-        window.innerHeight / 3,
-        false
-      );
+      createParticle(rect.left, rect.top, false);
     }
     if (wrongAnswerCount == 1) {
       heart1.src = "../src/grey_heart.png";

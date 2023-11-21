@@ -14,8 +14,9 @@ export function createParticle(x, y, result) {
   element.style.width = "30px";
 
   element.style.height = "15px";
-  element.style.border = "1px solid black";
+  element.style.border = "2px solid black";
   element.style.boxShadow = "1px";
+  element.style.borderBottomLeftRadius = "50%";
   // The elements are in absolute position
   element.style.position = "absolute";
   element.style.top = `${y}px`;

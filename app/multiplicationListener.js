@@ -2,6 +2,7 @@ import {
   submitMultiplicator,
   checkUserResult,
   generateNextChallenge,
+  newMultiplicator,
 } from "./multiplicatorChecker.js";
 import * as myEl from "./components.js";
 
@@ -12,6 +13,9 @@ myEl.multiplicatorInput.addEventListener("keyup", function (e) {
 });
 myEl.multiplicatorButton.addEventListener("click", function () {
   submitMultiplicator();
+});
+myEl.newMultiplicatorButton.addEventListener("click", function () {
+  newMultiplicator();
 });
 
 myEl.userAnswerInput.addEventListener("keyup", function (e) {

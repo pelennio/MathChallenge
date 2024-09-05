@@ -1,6 +1,7 @@
 import * as myEl from "./components.js";
 import { createParticle } from "./firework.js";
 
+let multiplicatorCheckError = "";
 let multiplicatorCheckResult = "";
 let multiplicatorValue = "";
 let arrayChallenge = [];
@@ -16,23 +17,36 @@ let rect = myEl.answerButton.getBoundingClientRect();
 window.PARTICLES_NUMBER = 30;
 
 export function submitMultiplicator() {
+  multiplicatorCheckResult = "⛄️ I'm waiting on the number";
   const numberValue = myEl.multiplicatorInput.value;
+  console.log("Checker: ", validateMultiplicatorInput(numberValue));
   if (validateMultiplicatorInput(numberValue)) {
     multiplicatorValue = Number(numberValue);
     myEl.multiplicatorCheckResultLine.textContent = multiplicatorCheckResult;
+    myEl.multiplicatorCheckErrorLine.textContent = multiplicatorCheckError;
   } else {
+    myEl.multiplicatorInput.focus();
+    myEl.multiplicatorCheckErrorLine.textContent = multiplicatorCheckError;
     return;
   }
-  if (validateMultiplicatorInput2(numberValue)) {
-  } else {
-    return;
-  }
+  myEl.multiplicatorInput.style.display = "none";
+  myEl.multiplicatorButton.style.display = "none";
+  myEl.newMultiplicatorButton.style.display = "inline";
+  myEl.multiplicatorLabel.textContent = `Current challenge is for ${numberValue}`;
   testResults = [];
   resetStats();
   tableConstructor(testResults);
   arrayChallenge = setNewArrayChallenge(multiplicatorValue);
   setNewMultiplier(multiplicatorValue);
   myEl.userAnswerInput.focus();
+}
+
+export function newMultiplicator() {
+  myEl.multiplicatorInput.style.display = "inline";
+  myEl.multiplicatorButton.style.display = "inline";
+  myEl.newMultiplicatorButton.style.display = "none";
+  myEl.multiplicatorInput.focus();
+  myEl.multiplicatorLabel.textContent = `Enter the number to be checked:`;
 }
 
 export function checkUserResult() {
@@ -65,42 +79,31 @@ export function generateNextChallenge() {
 }
 
 function validateMultiplicatorInput(numberValue) {
-  if (numberValue <= 10 && numberValue >= 0) {
+  if (
+    /\s+/.test(numberValue) ||
+    numberValue === "" ||
+    numberValue === null ||
+    numberValue === "undefined" ||
+    /\D+/.test(numberValue)
+  ) {
+    myEl.multiplicatorInput.value = "";
+    myEl.multiplicatorInput.value = "";
+    multiplicatorCheckError = "⚠️ type some number";
+    return false;
+  } else if (numberValue >= 0 && numberValue <= 12) {
     myEl.nextProblemButton.style.backgroundColor = "blue";
     myEl.nextProblemButton.style.display = "none";
+
     myEl.answerButton.style.display = "inline";
+    multiplicatorCheckError = "👍";
     multiplicatorCheckResult =
       "Let's check the multiplication for " + numberValue;
     return true;
-  } else if (
-    numberValue === "" ||
-    numberValue === null ||
-    numberValue === "undefined"
-  ) {
+  } else if (numberValue > 12) {
+    multiplicatorCheckError = "Make sure your number is less or equal to 12";
     myEl.multiplicatorInput.value = "";
-    myEl.multiplicatorInput.focus;
-    multiplicatorCheckResult = "⚠️ type some number";
+    myEl.multiplicatorInput.focus();
     return false;
-  } else if (numberValue > 11) {
-    return (multiplicatorCheckResult = "Make sure your number is less than 11");
-  } else {
-    myEl.multiplicatorInput.value = "";
-    myEl.multiplicatorInput.focus;
-    multiplicatorCheckResult = "⚠️ type some number";
-    return false;
-  }
-}
-function validateMultiplicatorInput2(numberValue) {
-  if (
-    numberValue === "" ||
-    numberValue === null ||
-    numberValue === "undefined"
-  ) {
-    return false;
-  } else if (numberValue > 11) {
-    return false;
-  } else {
-    return true;
   }
 }
 

@@ -2,6 +2,7 @@ import {
   submitDivider,
   checkUserResult,
   generateNextChallenge,
+  newDivider,
 } from "./divisionChecker.js";
 import * as myEl from "./components.js";
 
@@ -12,6 +13,9 @@ myEl.multiplicatorInput.addEventListener("keyup", function (e) {
 });
 myEl.multiplicatorButton.addEventListener("click", function () {
   submitDivider();
+});
+myEl.newMultiplicatorButton.addEventListener("click", function () {
+  newDivider();
 });
 
 myEl.userAnswerInput.addEventListener("keyup", function (e) {

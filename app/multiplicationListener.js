@@ -1,37 +1,32 @@
-import {
-  submitMultiplicator,
-  checkUserResult,
-  generateNextChallenge,
-  newMultiplicator,
-} from "./multiplicatorChecker.js";
 import * as myEl from "./components.js";
+import * as helpers from "./helpers.js";
 
 myEl.multiplicatorInput.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
-    submitMultiplicator();
+    helpers.submitMultiplicator();
   }
 });
 myEl.multiplicatorButton.addEventListener("click", function () {
-  submitMultiplicator();
+  helpers.submitMultiplicator();
 });
 myEl.newMultiplicatorButton.addEventListener("click", function () {
-  newMultiplicator();
+  helpers.newMultiplicator();
 });
 
 myEl.userAnswerInput.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
-    checkUserResult();
+    helpers.checkUserResult();
     myEl.nextProblemButton.focus();
   }
 });
 myEl.answerButton.addEventListener("click", function () {
-  checkUserResult();
+  helpers.checkUserResult();
   myEl.userAnswerInput.focus();
 });
 myEl.nextProblemButton.addEventListener("click", function () {
-  generateNextChallenge();
+  helpers.generateNextChallenge();
   sleep(300).then(() => {
-    console.log("World!");
+    console.log("nextProblemButton was clicked");
     myEl.userAnswerInput.focus();
   });
 });

@@ -1,6 +1,7 @@
 import * as myEl from "./components.js";
 import { createParticle } from "./firework.js";
 
+let multiplicatorCheckError = "";
 let multiplicatorCheckResult = "";
 let multiplicatorValue = "";
 let arrayChallenge = [];
@@ -9,11 +10,6 @@ let testResults = [];
 let score = Number(localStorage.getItem("score"))
   ? Number(localStorage.getItem("score"))
   : 133;
-
-// let re1 = new RegExp("division");
-
-let score1 = JSON.stringify(localStorage);
-
 let wrongAnswerCount = 0;
 let multiplier;
 let hidden = false;
@@ -21,16 +17,21 @@ let rect = myEl.answerButton.getBoundingClientRect();
 window.PARTICLES_NUMBER = 30;
 
 export function submitDivider() {
-  multiplicatorValue = Number(myEl.multiplicatorInput.value);
-  if (validateMultiplicatorInput(multiplicatorValue)) {
+  multiplicatorCheckResult = "⛄️ I'm waiting on the number";
+  const numberValue = myEl.multiplicatorInput.value;
+  if (validateMultiplicatorInput(numberValue)) {
+    multiplicatorValue = Number(numberValue);
     myEl.multiplicatorCheckResultLine.textContent = multiplicatorCheckResult;
+    myEl.multiplicatorCheckErrorLine.textContent = multiplicatorCheckError;
   } else {
+    myEl.multiplicatorInput.focus();
+    myEl.multiplicatorCheckErrorLine.textContent = multiplicatorCheckError;
     return;
   }
-  if (validateMultiplicatorInput2(multiplicatorValue)) {
-  } else {
-    return;
-  }
+  myEl.multiplicatorInput.style.display = "none";
+  myEl.multiplicatorButton.style.display = "none";
+  myEl.newMultiplicatorButton.style.display = "inline";
+  myEl.multiplicatorLabel.textContent = `Current challenge is for ${numberValue}`;
   testResults = [];
   resetStats();
   tableConstructor(testResults);
@@ -39,12 +40,31 @@ export function submitDivider() {
   myEl.userAnswerInput.focus();
 }
 
+export function newDivider() {
+  myEl.multiplicatorInput.style.display = "inline";
+  myEl.multiplicatorButton.style.display = "inline";
+  myEl.multiplicatorInput.focus();
+  myEl.newMultiplicatorButton.style.display = "none";
+  myEl.multiplicatorLabel.textContent = `Enter the number to be checked:`;
+}
+
 export function checkUserResult() {
   const answerValue = Number(myEl.userAnswerInput.value);
   const number1 = multiplicatorValue;
-  myEl.answerCheckResultLine.textContent = checkTheAnswer(answerValue, number1)
-    ? "🎉🎉🎉 It is a correct answer"
-    : "It is not a correct answer";
+
+  if (answerValue == 0) {
+    console.log("empty");
+    myEl.answerCheckResultLine.textContent =
+      "Did you forget to answer on the current question? oo";
+    return;
+  } else {
+    myEl.answerCheckResultLine.textContent = checkTheAnswer(
+      answerValue,
+      number1
+    )
+      ? "🎉🎉🎉 It is a correct answer"
+      : "It is not a correct answer";
+  }
   tableConstructor(testResults);
   testScores();
   myEl.scoreElement.textContent = `Current challenge score : ${score}`;
@@ -242,7 +262,7 @@ function setNewArrayChallenge(divider = 1) {
   let div = divider;
   let arrayChallenge = [];
   for (let i = 0; i < 1; i++) {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 1; i < 11; i++) {
       arrayChallenge.push(i * div);
     }
   }

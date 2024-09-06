@@ -1,37 +1,34 @@
-import {
-  submitDivider,
-  checkUserResult,
-  generateNextChallenge,
-  newDivider,
-} from "./divisionChecker.js";
 import * as myEl from "./components.js";
+import * as helpers from "./helpers.js";
+
+const expression = "division";
 
 myEl.multiplicatorInput.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
-    submitDivider();
+    helpers.submitMultiplicator(expression);
   }
 });
 myEl.multiplicatorButton.addEventListener("click", function () {
-  submitDivider();
+  helpers.submitMultiplicator(expression);
 });
 myEl.newMultiplicatorButton.addEventListener("click", function () {
-  newDivider();
+  helpers.newMultiplicator();
 });
 
 myEl.userAnswerInput.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
-    checkUserResult();
+    helpers.checkUserResult(expression);
     myEl.nextProblemButton.focus();
   }
 });
 myEl.answerButton.addEventListener("click", function () {
-  checkUserResult();
+  helpers.checkUserResult(expression);
   myEl.userAnswerInput.focus();
 });
 myEl.nextProblemButton.addEventListener("click", function () {
-  generateNextChallenge();
+  helpers.generateNextChallenge(expression);
   sleep(300).then(() => {
-    console.log("World!");
+    console.log("nextProblemButton was clicked");
     myEl.userAnswerInput.focus();
   });
 });

@@ -16,10 +16,10 @@ let hidden = false;
 let rect = myEl.answerButton.getBoundingClientRect();
 window.PARTICLES_NUMBER = 30;
 
-export function submitMultiplicator() {
+export function submitMultiplicator(expression) {
   multiplicatorCheckResult = "⛄️ I'm waiting on the number";
   const numberValue = myEl.multiplicatorInput.value;
-  if (validateMultiplicatorInput(numberValue)) {
+  if (validateMultiplicatorInput(numberValue, expression)) {
     multiplicatorValue = Number(numberValue);
     myEl.multiplicatorCheckResultLine.textContent = multiplicatorCheckResult;
     myEl.multiplicatorCheckErrorLine.textContent = multiplicatorCheckError;
@@ -35,12 +35,12 @@ export function submitMultiplicator() {
   testResults = [];
   resetStats();
   tableConstructor(testResults);
-  arrayChallenge = setNewArrayChallenge(multiplicatorValue);
-  setNewMultiplier(multiplicatorValue);
+  arrayChallenge = setNewArrayChallenge(multiplicatorValue, expression);
+  setNewMultiplier(multiplicatorValue, expression);
   myEl.userAnswerInput.focus();
 }
 
-function validateMultiplicatorInput(numberValue) {
+function validateMultiplicatorInput(numberValue, expression) {
   if (
     /\s+/.test(numberValue) ||
     numberValue === "" ||
@@ -48,7 +48,6 @@ function validateMultiplicatorInput(numberValue) {
     numberValue === "undefined" ||
     /\D+/.test(numberValue)
   ) {
-    myEl.multiplicatorInput.value = "";
     myEl.multiplicatorInput.value = "";
     multiplicatorCheckError = "⚠️ type some number";
     return false;
@@ -59,7 +58,7 @@ function validateMultiplicatorInput(numberValue) {
     myEl.answerButton.style.display = "inline";
     multiplicatorCheckError = "👍";
     multiplicatorCheckResult =
-      "Let's check the multiplication for " + numberValue;
+      `Let's check the ${expression} for ` + numberValue;
     return true;
   } else if (numberValue > 12) {
     multiplicatorCheckError = "Make sure your number is less or equal to 12";
@@ -77,37 +76,39 @@ export function newMultiplicator() {
   myEl.multiplicatorLabel.textContent = `Enter the number to be checked:`;
 }
 
-export function checkUserResult() {
+export function checkUserResult(expression) {
   const answerValue = Number(myEl.userAnswerInput.value);
   const number1 = multiplicatorValue;
 
   if (answerValue == 0) {
     console.log("empty");
     myEl.answerCheckResultLine.textContent =
-      "Did you forget to answer on the current question? oo";
+      "Did you forget to answer on the current question? 😵‍💫";
     return;
   } else {
     myEl.answerCheckResultLine.textContent = checkTheAnswer(
       answerValue,
-      number1
+      number1,
+      expression
     )
       ? "🎉🎉🎉 It is a correct answer"
       : "It is not a correct answer";
   }
   tableConstructor(testResults);
-  testScores();
+  testScores(expression);
   myEl.scoreElement.textContent = `Current challenge score : ${score}`;
   myEl.wrongAnswerCountElement.textContent = `Wrong_Answers : ${wrongAnswerCount}`;
   action(myEl.answerButton, myEl.nextProblemButton);
 }
-export function generateNextChallenge() {
+
+export function generateNextChallenge(expression) {
   const answerValue = myEl.userAnswerInput.value;
   if (answerValue == "") {
     myEl.answerCheckResultLine.textContent =
       "Did you forget to answer on the current question?";
   } else {
     try {
-      setNewMultiplier(multiplicatorValue);
+      setNewMultiplier(multiplicatorValue, expression);
     } catch (e) {
       return;
     }
@@ -130,10 +131,23 @@ Array.prototype.random = function () {
   }
 };
 
-function setNewMultiplier(multiplicatorValue) {
+function setNewMultiplier(multiplicatorValue, expression) {
   multiplier = arrayChallenge.random();
-  challenge.textContent = multiplicatorValue + "*" + multiplier + "=";
+  switch (expression) {
+    case "multiplication":
+      console.log("setNewMultiplier - multiplication");
+      challenge.textContent = multiplicatorValue + "*" + multiplier + "=";
+      myEl.userAnswerInput.value = "";
+      break;
+    case "division":
+      console.log("setNewMultiplier - division");
+      challenge.textContent = multiplier + "/" + multiplicatorValue + "=";
+      break;
+    default:
+      console.log(`Sorry, we are out of ${expression}.`);
+  }
   myEl.userAnswerInput.value = "";
+
   return multiplier;
 }
 
@@ -152,16 +166,17 @@ function tableConstructor(testResults) {
   placeholder.innerHTML = out;
 }
 
-function testScores() {
+function testScores(expression) {
   let placeholder = document.querySelector("#data-output1");
-  // console.log("localStorage.length " + localStorage.length);
-  let exp = /multiplication/;
+
+  let exp = new RegExp(expression);
+  let number = expression.length + 7;
   let out = "";
   for (var a in localStorage) {
     if (exp.test(a)) {
       out += `
              <tr>
-                <td>${a.slice(22)}</td>
+                <td>${a.slice(number)}</td>
                 <td>${localStorage[a]}</td>
              </tr>
           `;
@@ -170,16 +185,32 @@ function testScores() {
   }
 }
 
-function checkTheAnswer(answerValue, number1) {
+function checkTheAnswer(answerValue, number1, expression) {
   let newTestResult = {
     number1: number1,
     number2: multiplier,
     answer: answerValue,
   };
-  if (answerValue === number1 * multiplier) {
+  let expectedAnswer = 0;
+
+  switch (expression) {
+    case "multiplication":
+      console.log("expression = multiplication");
+      expectedAnswer = number1 * multiplier;
+      break;
+    case "division":
+      console.log("setNewMultiplier - division");
+      expectedAnswer = multiplier / number1;
+      break;
+    default:
+      console.log(`Sorry, we are out of ${expression}.`);
+  }
+
+  ////////////
+  if (answerValue === expectedAnswer) {
     testResults.push(newTestResult);
     score++;
-    updateScore();
+    updateScore(expression);
     const index = arrayChallenge.indexOf(multiplier);
     if (index > -1) {
       arrayChallenge.splice(index, 1);
@@ -188,12 +219,12 @@ function checkTheAnswer(answerValue, number1) {
     for (let i = 0; i < window.PARTICLES_NUMBER; i++) {
       createParticle(rect.left, rect.top, true);
     }
-    console.log("tadaaaa");
+    console.log("It is a correct answer");
     return true;
   } else {
     wrongAnswerCount++;
     score--;
-    updateScore();
+    updateScore(expression);
     for (let i = 0; i < window.PARTICLES_NUMBER; i++) {
       createParticle(rect.left, rect.top, false);
     }
@@ -212,9 +243,9 @@ function checkTheAnswer(answerValue, number1) {
   }
 }
 
-function updateScore() {
+function updateScore(expression) {
   localStorage.setItem(
-    `multiplication score: ${multiplicatorValue}`,
+    `${expression} score: ${multiplicatorValue}`,
     String(score)
   );
 }
@@ -242,15 +273,24 @@ function resetStats() {
   myEl.heart1.src = "../src/red_heart.gif";
   myEl.heart2.src = "../src/red_heart.gif";
   myEl.heart3.src = "../src/red_heart.gif";
-  arrayChallenge = setNewArrayChallenge();
+  // arrayChallenge = setNewArrayChallenge(multiplicatorValue, expression);
   hidden = false;
 }
 
-function setNewArrayChallenge() {
+function setNewArrayChallenge(multiplicatorValue, expression) {
   let arrayChallenge = [];
   for (let i = 0; i < 1; i++) {
     for (let i = 1; i < 11; i++) {
-      arrayChallenge.push(i);
+      switch (expression) {
+        case "multiplication":
+          arrayChallenge.push(i);
+          break;
+        case "division":
+          arrayChallenge.push(i * multiplicatorValue);
+          break;
+        default:
+          console.log(`Sorry, we are out of ${expression}.`);
+      }
     }
   }
   console.log("ArrayChallenge: " + arrayChallenge);

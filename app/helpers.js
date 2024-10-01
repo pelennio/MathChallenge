@@ -51,7 +51,7 @@ function validateMultiplicatorInput(numberValue, expression) {
     myEl.multiplicatorInput.value = "";
     multiplicatorCheckError = "⚠️ type some number";
     return false;
-  } else if (numberValue >= 0 && numberValue <= 12) {
+  } else if (numberValue >= 0 && numberValue <= 20) {
     myEl.nextProblemButton.style.backgroundColor = "blue";
     myEl.nextProblemButton.style.display = "none";
 

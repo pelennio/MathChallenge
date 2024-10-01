@@ -47,6 +47,17 @@
       <img class="heart" src="../src/red_heart.gif" id="heart1" alt="Computer man">
       <img class="heart" src="../src/red_heart.gif" id="heart2" alt="Computer man">
       <img class="heart" src="../src/red_heart.gif" id="heart3" alt="Computer man">
+
+      <div class="button-container">
+      <button id="header1" class="collapsible_new">The results of the challange</button>
+    
+    
+      <button id="header2" class="collapsible_new">The scores of the challanges</button>
+    </div>
+
+  
+
+
     </div></p>
       
       </div>
@@ -66,13 +77,14 @@
    
   </section>
 
-
-
-
-  <section class="section " id="sec">
-    <div class="container table container_float">
-      <button id="header" class="collapsible">The results of the challange</button>
-      <div class="content">
+  <!-- First Modal -->
+  <div id="modal1" class="modal">
+    <!-- Modal Content -->
+    <div class="modal-content">
+      <span class="close" data-modal="modal1">&times;</span>
+      <h2>Current challenge results</h2>
+      <p></p>
+      <div class="addSomeName">
         <table>
           <thead>
             <tr>
@@ -84,13 +96,17 @@
           <tbody id="data-output"></tbody>
         </table></div> 
     </div>
+  </div>
 
-
-
-    <div class="container table container_float">
-      <button id="header" class="collapsible">The scores of the challanges</button>
-  
-      <div class="content">
+  <!-- Second Modal -->
+  <div id="modal2" class="modal">
+    <!-- Modal Content -->
+    <div class="modal-content">
+      <span class="close" data-modal="modal2">&times;</span>
+      <h2>All challenges results</h2>
+      <p></p>
+     
+      <div class="addSomeName">
         <table>
           <thead>
             <tr>
@@ -101,10 +117,10 @@
           <tbody id="data-output1"></tbody>
         </table>
       </div>
-
-
     </div>
-  </section>
+  </div>
+
+
 
   
   <footer class="footer" id="sec-a5e5">

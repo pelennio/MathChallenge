@@ -32,6 +32,21 @@ myEl.nextProblemButton.addEventListener("click", function () {
   });
 });
 
+myEl.answerButton.addEventListener("click", function () {
+  helpers.checkUserResult(expression);
+  myEl.userAnswerInput.focus();
+});
+
+myEl.curentChellengeResultTable.onclick = function () {
+  myEl.modal.style.display = "block";
+};
+myEl.allChallengeResultTable.onclick = function () {
+  myEl.modal.style.display = "block";
+};
+myEl.allChallengeResultTable.onclick = function () {
+  myEl.allScoresModal.style.display = "block";
+};
+
 var coll = document.getElementsByClassName("collapsible");
 let i;
 for (i = 0; i < coll.length; i++) {
@@ -49,3 +64,21 @@ for (i = 0; i < coll.length; i++) {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+// Close modal when 'x' is clicked
+document.querySelectorAll(".close").forEach((span) => {
+  span.addEventListener("click", function () {
+    const modalId = this.getAttribute("data-modal");
+
+    // Close the modal associated with the clicked 'x'
+    document.getElementById(modalId).style.display = "none";
+  });
+});
+
+// Close modal when clicking outside the modal content
+window.onclick = function (event) {
+  // Check if the clicked element has the 'modal' class (i.e., the backdrop)
+  if (event.target.classList.contains("modal")) {
+    event.target.style.display = "none";
+  }
+};

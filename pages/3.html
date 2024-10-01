@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pete the Cat Style Buttons</title>
+    <style>
+      body {
+        font-family: "Comic Sans MS", cursive, sans-serif; /* Fun, playful font */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #e0f7fa; /* Light blue background */
+        margin: 0; /* Remove default margin */
+      }
+
+      .button-container {
+        display: flex;
+        gap: 20px; /* Space between buttons */
+      }
+
+      .button {
+        flex: 1; /* Make buttons equal size */
+        padding: 15px; /* Button padding */
+        font-size: 20px; /* Font size */
+        color: white; /* Text color */
+        border: none; /* Remove border */
+        border-radius: 10px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor */
+        transition: transform 0.2s; /* Transition for hover effect */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+      }
+
+      /* Button colors inspired by "Pete the Cat" */
+      .button-blue {
+        background-color: #007bff; /* Blue color */
+      }
+
+      .button-yellow {
+        background-color: #ffcc00; /* Yellow color */
+      }
+
+      .button-red {
+        background-color: #ff4136; /* Red color */
+      }
+
+      /* Hover effect */
+      .button:hover {
+        transform: scale(1.1); /* Slightly enlarge on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="button-container">
+      <button class="button button-blue">Button 1</button>
+      <button class="button button-yellow">Button 2</button>
+      <button class="button button-red">Button 3</button>
+    </div>
+  </body>
+</html>

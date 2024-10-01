@@ -16,6 +16,13 @@ body {
   font-style: normal;
   font-weight: 800;
   display: block;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  display: flex; /* Use flexbox for centering content */
+  flex-direction: column;
+  overflow: hidden; /* Prevent scrolling */
 }
 .head {
   position: fixed;
@@ -80,6 +87,7 @@ p {
 }
 .footer {
   color: grey;
+  padding: 10px; /* Padding for footer */
 }
 
 .result2 {
@@ -119,6 +127,8 @@ p {
   );
   height: auto;
   overflow: hidden;
+  width: 100vw; /* Full width of the viewport */
+  height: 96vh;
 }
 
 .container_main {

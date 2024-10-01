@@ -32,11 +32,6 @@ myEl.nextProblemButton.addEventListener("click", function () {
   });
 });
 
-myEl.answerButton.addEventListener("click", function () {
-  helpers.checkUserResult(expression);
-  myEl.userAnswerInput.focus();
-});
-
 myEl.curentChellengeResultTable.onclick = function () {
   myEl.modal.style.display = "block";
 };

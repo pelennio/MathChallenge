@@ -448,7 +448,7 @@ table td {
 .modal {
   display: none; /* Hidden by default */
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   left: 0;
   top: 0;
   width: 100%;
@@ -458,13 +458,22 @@ table td {
 
 /* Modal Content Box */
 .modal-content {
+  position: absolute; /* Position content inside the modal */
+  top: 50%;
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust position */
+  width: 90%; /* Width of modal content */
+  max-width: 500px; /* Optional: max width for larger screens */
+  background-color: white; /* White background for modal content */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding inside the modal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  /*****/
   background-color: white;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Adjust width as needed */
-  max-width: 500px; /* Optional: Max width */
-  border-radius: 10px;
+  /* width: 80%; Adjust width as needed */
 }
 
 /* Close Button */

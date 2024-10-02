@@ -23,6 +23,7 @@ body {
   display: flex; /* Use flexbox for centering content */
   flex-direction: column;
   overflow: hidden; /* Prevent scrolling */
+  margin-left: 0px;
 }
 .head {
   position: fixed;
@@ -416,7 +417,7 @@ table td {
 /* updated styles for new page*/
 .collapsible_new {
   flex: 1; /* Allow buttons to grow equally */
-  padding: 15px; /* Add padding for button size */
+  padding: 10px; /* Add padding for button size */
   font-size: 16px; /* Font size */
   color: white; /* Text color */
   background-color: #007bff; /* Button background color */
@@ -470,8 +471,7 @@ table td {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
   /*****/
   background-color: white;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+
   border: 1px solid #888;
   /* width: 80%; Adjust width as needed */
 }

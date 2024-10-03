@@ -77,3 +77,12 @@ window.onclick = function (event) {
     event.target.style.display = "none";
   }
 };
+
+function onPageLoad() {
+  console.log("Page has fully loaded!");
+  helpers.testScores("multiplication");
+  // helpers.tableConstructor();
+}
+
+// Attach event listener to DOMContentLoaded
+document.addEventListener("DOMContentLoaded", onPageLoad);

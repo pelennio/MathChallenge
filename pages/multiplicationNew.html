@@ -17,7 +17,7 @@
   <div id="snowflakeContainer">
     <img class="snowflake" src="../src/icons_1.svg" />
   </div>
-  <section class="head">
+  <section class="head border">
       <div class="nav-container">
     <ul class="nav">
       <li class="nav-item">
@@ -30,17 +30,14 @@
   </section>
 
 
-  <section class="section" id="sec1">
-
-
-    
+  <section class="section border" id="sec1">
     <div class="lay">
-      <div class="container_main container_float" id="multiplicatorForm">
+      <div class="container_main container_float border border-style" id="multiplicatorForm">
 
         <div class="button-container" >
 
 
-          <div class="smallForm">
+          <div class="smallForm border-style">
             <p>
               <label class="result2" id="nameLable">Enter the number to be checked:</label>
             </p>
@@ -49,7 +46,7 @@
             <button hidden id="newMultiplicator" type="submit" >Set up another number</button>
           </br><p class="result2" id="multiplicatorCheckError">⛄️ </p>
           </div>
-          <div class="smallForm">
+          <div class="smallForm border-style">
             <p id="score">Score : 0</p>
             <p id="wrongAnswerCount">Wrong_Answers : 0</p>
             <div class="heart1">
@@ -60,27 +57,6 @@
           </div>
         </div>  </div>
 
-        <!-- <p>
-          <label class="result2" id="nameLable">Enter the number to be checked:</label>
-        </p>
-        <input pattern="[0-9]*" inputmode="numeric" id="userinput" type="number"  placeholder="Type your number" autofocus autocomplete="off" />
-        <button id="multiplicator" type="submit">Start the challenge</button>
-        <button hidden id="newMultiplicator" type="submit" >Set up another number</button>
-      </br><p class="result2" id="multiplicatorCheckError">⛄️ </p>
-
-      <p id="score">Score : 0</p>
-      <p id="wrongAnswerCount">Wrong_Answers : 0</p>
-      <div class="heart1">
-      <img class="heart" src="../src/red_heart.gif" id="heart1" alt="Computer man">
-      <img class="heart" src="../src/red_heart.gif" id="heart2" alt="Computer man">
-      <img class="heart" src="../src/red_heart.gif" id="heart3" alt="Computer man">
-      <hr> Horizontal line -->
-    
-
-  
-
-
-    <!-- </div></p> -->
     <div class="button-container">
       <button id="header1" class="collapsible_new">The results of the current challange</button>
       <button id="header2" class="collapsible_new">The scores of all challanges</button>
@@ -88,7 +64,7 @@
       </div>
 
 
-      <div class="container_main container_float results">
+      <div class="container_main container_float results border border-style">
         <p class="result2" id="multiplicatorCheckResult">⏰</p>
       </br>
       <button class="challenge" id="challenge"></button>

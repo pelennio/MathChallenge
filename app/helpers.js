@@ -151,7 +151,7 @@ function setNewMultiplier(multiplicatorValue, expression) {
   return multiplier;
 }
 
-function tableConstructor(testResults) {
+export function tableConstructor(testResults) {
   let placeholder = document.querySelector("#data-output");
   let out = "";
   for (let element of testResults) {
@@ -166,9 +166,8 @@ function tableConstructor(testResults) {
   placeholder.innerHTML = out;
 }
 
-function testScores(expression) {
+export function testScores(expression) {
   let placeholder = document.querySelector("#data-output1");
-
   let exp = new RegExp(expression);
   let number = expression.length + 7;
   let out = "";

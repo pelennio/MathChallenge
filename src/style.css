@@ -71,6 +71,7 @@ p {
 /* the container with the challenge and results */
 .results {
   overflow: hidden;
+  width: 100vw;
   text-transform: uppercase;
   justify-content: center;
   display: flex;

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Acme&family=Black+Ops+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="shortcut icon" href="#" />
+    <title>😺 Home - Math Quiz Olena</title>
+  </head>
+
+  <body>
+    <div id="snowflakeContainer">
+      <img class="snowflake" src="./src/icons_1.svg" alt="Snowflake icon" />
+    </div>
+
+    <section class="head">
+      <div class="nav-container">
+        <h1 id="header">Here we are going to practice math</h1>
+      </div>
+    </section>
+
+    <section class="section" id="sec1">
+      <div class="container">
+        <button
+          id="newMultiplicator"
+          onclick="location.href='pages/multiplicationNew.html';"
+        >
+          NEW - Start the multiplication challenge
+        </button>
+
+        <button
+          id="multiplicator"
+          onclick="location.href='pages/division.html';"
+        >
+          Start the division challenge
+        </button>
+
+        <button id="localReset" onclick="localStorage.clear()">
+          Reset all challange results
+        </button>
+      </div>
+    </section>
+
+    <footer class="footer" id="sec-a5e5">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <p>Part of my learning<br /></p>
+      </div>
+    </footer>
+
+    <script type="module" src="./app/snowflakes.js"></script>
+  </body>
+</html>

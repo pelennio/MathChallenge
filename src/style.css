@@ -1,0 +1,550 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "VAG Rounded Std", Sans-serif;
+  overflow: x-hidden; /* Prevent scrolling */
+}
+@font-face {
+  font-family: VAG Rounded Std;
+  src: url("VAG\ Rounded\ Std\ Black.otf");
+}
+
+body {
+  color: #193619;
+  font-style: normal;
+  font-weight: 800;
+  /* display: flex; */
+  height: 100vh; /* Full height of the viewport */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  display: flex; /* Use flexbox for centering content */
+  flex-direction: column;
+  padding-bottom: 30px;
+}
+.head {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: repeating-linear-gradient(
+    90deg,
+    #ffeb80,
+    #ffeb80 10px,
+    #fd0 10px,
+    #fd0 20px
+  );
+  z-index: 3;
+  box-shadow: 0px 4px 6px 0px #01091f;
+}
+h1 {
+  text-transform: uppercase;
+  margin-left: 10px;
+  width: 100%;
+  text-shadow: 2px 2px rgba(18, 3, 37, 0.424);
+}
+
+h2,
+p {
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
+#snowflakeContainer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.snowflake {
+  position: fixed;
+  user-select: none;
+  z-index: 1000;
+  pointer-events: none;
+  width: 15px;
+}
+/* The field with a challenge text */
+#challenge {
+  font-size: xx-large;
+  background-color: rgb(37, 23, 168);
+}
+/* the container with the challenge and results */
+.results {
+  /* overflow: hidden; */
+  width: 100%;
+  text-transform: uppercase;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the button vertically */
+}
+.footer {
+  overflow: x-hidden; /* Prevent scrolling */
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  line-height: 30px; /* Center text vertically */
+  width: 100%;
+}
+.border-style,
+button,
+input {
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius: 15px 255px;
+}
+
+.border,
+button,
+input {
+  border: solid 2px #41403e;
+  border-color: #01091f;
+  box-shadow: 0px 4px 6px 0px #01091f;
+}
+
+.result2 {
+  animation: color-animation 4s linear infinite;
+  --color-1: #465298;
+  --color-2: #606dbc;
+  --color-3: Black;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.container {
+  display: block;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section {
+  flex-grow: 1;
+  min-height: calc(100vh - 60px); /* Adjust height to account for .head */
+  padding-top: 80px; /* Add padding to avoid overlap with .head */
+  background: repeating-linear-gradient(
+    90deg,
+    #606dbc,
+    #606dbc 10px,
+    #465298 10px,
+    #465298 20px
+  );
+  height: auto;
+  width: 100%; /* Full width of the viewport */
+}
+
+.container_main {
+  display: block;
+  margin-top: 30px;
+  background-image: url("yel_sc.png");
+  background-size: cover;
+  background-position: 50% 50%;
+  text-align: center;
+  height: 50%;
+  padding: 15px;
+  min-height: 150px;
+}
+
+.container_float {
+  float: left;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.container2 {
+  position: relative;
+  left: 25%;
+}
+
+.lay {
+  margin-top: 30px;
+  display: block;
+  position: relative;
+  top: 0;
+  z-index: 1;
+  height: auto;
+}
+
+.pete1 {
+  width: 20%;
+  z-index: 2;
+  position: relative;
+}
+
+@keyframes color-animation {
+  0% {
+    color: var(--color-1);
+  }
+  32% {
+    color: var(--color-1);
+  }
+  33% {
+    color: var(--color-2);
+  }
+  65% {
+    color: var(--color-2);
+  }
+  66% {
+    color: var(--color-3);
+  }
+  99% {
+    color: var(--color-3);
+  }
+  100% {
+    color: var(--color-1);
+  }
+}
+
+/* .container_float {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+  float: left;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+} */
+
+/* navigation item in head */
+.nav {
+  list-style: none;
+  display: block;
+  padding-left: 0px;
+
+  text-decoration: none;
+  right: 0px;
+  position: absolute;
+  bottom: 0px;
+  margin-bottom: 0px;
+  margin-top: 50px;
+}
+.nav-item {
+  margin-right: 10px;
+  display: block;
+  white-space: nowrap;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+input {
+  color: green;
+  width: 50%;
+  background-color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  margin: 2px 0px;
+  accent-color: blue;
+  font-family: "VAG Rounded Std", "Black Ops One", "Bakbak One", Sans-serif;
+  margin-bottom: 10px;
+}
+
+button {
+  color: #fff;
+  width: 50%;
+  background-color: green;
+  padding: 5px 0;
+  margin: 2px 0px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 400;
+  transition-duration: 0.3s;
+  font-family: "VAG Rounded Std", "Black Ops One", "Bakbak One", Sans-serif;
+  text-shadow: 2px 2px rgba(18, 3, 37, 0.424);
+  font-size: 16px;
+}
+input:focus,
+button:focus {
+  outline-color: transparent;
+  outline-style: outset;
+  box-shadow: 0px 4px 8px 0px rgb(1, 2, 167);
+}
+
+/* button:hover {
+  background-color: #002ead;
+  box-shadow: 0px 4px 6px 0px #002ead7f;
+  /* transition: 0.7s; 
+} */
+/* Hover state */
+button:hover {
+  background-color: #98db69; /* Slightly lighter shade on hover */
+  transform: scale(1.1); /* Scale up effect on hover */
+  box-shadow: 2px 6px 12px 2px #01091f; /* Deeper shadow on hover */
+  padding: 10px;
+  color: #ffffff;
+}
+
+/* Optional: Active state for when the button is clicked */
+button:active {
+  transform: scale(0.95); /* Slightly scale down when clicked */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+}
+
+/* button:active {
+  background-color: #f6f4ee;
+  color: #002ead;
+} */
+input:focus {
+  background-color: rgb(146, 159, 194);
+  color: white;
+}
+
+table {
+  width: 100%;
+  margin: 30px auto;
+}
+
+table th {
+  border: solid 2px #41403e;
+  padding: 10px 0;
+  background-color: #5e6cec;
+  text-align: center;
+  border: thin solid #d4d4d4;
+}
+
+table td {
+  padding: 10px;
+  border: thin solid #d4d4d4;
+  width: 18%;
+  text-align: center;
+  background-color: #fff;
+  border: solid 2px #41403e;
+  border-color: #01091f;
+}
+
+#header {
+  text-shadow: 2px 2px rgba(197, 187, 208, 0.42);
+}
+
+.heart1 {
+  object-fit: contain;
+}
+
+.heart {
+  object-fit: contain;
+  width: 30%;
+  max-height: 50px;
+  height: 100%;
+  display: inline-block;
+}
+
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.button-container {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: row;
+  gap: 10px; /* Space between buttons */
+  justify-content: center;
+}
+/* updated styles for new page*/
+.collapsible_new {
+  flex: 1; /* Allow buttons to grow equally */
+  padding: 10px; /* Add padding for button size */
+  font-size: 16px; /* Font size */
+  color: white; /* Text color */
+  background-color: #2d6ebd; /* Button background color */
+
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Transition effect */
+}
+.collapsible_new:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
+
+.collapsible_new:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 5px #0056b3; /* Add custom focus shadow */
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+/* Modal Content Box */
+.modal-content {
+  position: absolute; /* Position content inside the modal
+  top: 50%;
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust position */
+  width: 90%; /* Width of modal content */
+  max-width: 500px; /* Optional: max width for larger screens */
+  background-color: white; /* White background for modal content */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding inside the modal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  /*****/
+  background-color: white;
+
+  border: 1px solid #888;
+  /* width: 80%; Adjust width as needed */
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Optional: Style for the trigger button */
+.open-modal-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.open-modal-btn:hover {
+  background-color: #0056b3;
+}
+
+.smallForm {
+  flex: 1;
+  background-color: rgba(128, 128, 128, 0.349);
+  margin-bottom: 10px;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 300px; /* Set a minimum width for each section*/
+  min-height: 300px;
+  padding: 20px;
+  background-image: url("yel_sc.png");
+  background-size: cover;
+  background-position: 50% 50%;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .container_float {
+    flex-direction: column; /* Stack sections vertically on small screens */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Target phones & small tablets */
+  .smallForm {
+    width: 90vw;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: inline;
+}
+
+/* Snowflake container */
+.snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Snowflake styles */
+.snowflake1 {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.623);
+  font-size: 10px;
+  opacity: 0.5;
+  animation: fall linear infinite;
+}
+
+/* Random size and position */
+@keyframes fall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(30px) translateY(50vh); /* Move right while falling */
+  }
+  100% {
+    transform: translateX(-30px) translateY(100vh); /* Move left while reaching bottom */
+    opacity: 0;
+  }
+}
+
+/* Snow pile at the bottom */
+.snow-pile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: #f1f1f1;
+  z-index: 2;
+}
+
+/* Snow layer that builds the pile */
+.snow-layer {
+  position: absolute;
+  bottom: 0;
+  background: #fff;
+  opacity: 0.9;
+  border-radius: 50%;
+  transition: width 1s ease, height 1s ease;
+}
+
+.popup {
+  position: fixed;
+  transform: translateX(-50%);
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  text-align: center;
+  width: 250px;
+  max-width: 95vw;
+  animation: fadeIn 0.3s ease-out forwards;
+  z-index: 10;
+}
